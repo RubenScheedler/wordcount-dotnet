@@ -7,35 +7,38 @@ public partial class WordFrequencyAnalyzer : IWordFrequencyAnalyzer
 {
     public int CalculateHighestFrequency(string text)
     {
-        throw new NotImplementedException();
+        var words = SplitIntoWords(text.ToLower());
+
+        return CalculateWordFrequencies(words).MaxBy(wordFrequency => wordFrequency.Frequency)?.Frequency ?? 0;
     }
 
     public int CalculateFrequencyForWord(string text, string wordToCount)
     {
-        text = text.ToLower();
-        
-        var words = SplitIntoWords(text);
+        var words = SplitIntoWords(text.ToLower());
 
         return words.Count(word => word == wordToCount.ToLower());
     }
 
     public List<IWordFrequency> CalculateMostFrequentNWords(string text, int n)
     {
-        text = text.ToLower();
-        
-        var words = SplitIntoWords(text);
+        var words = SplitIntoWords(text.ToLower());
 
         return
         [
-            ..words.GroupBy(word => word).Select(group => new WordFrequency(
-                group.Key,
-                group.Count()
-            )).ToList()
+            ..CalculateWordFrequencies(words)
             .OrderBy(wordFrequency => wordFrequency.Word)
             .Take(n)
         ];
     }
-    
+
+    private static List<WordFrequency> CalculateWordFrequencies(IEnumerable<string> words)
+    {
+        return words.GroupBy(word => word).Select(group => new WordFrequency(
+            group.Key,
+            group.Count()
+        )).ToList();
+    }
+
     private static IEnumerable<string> SplitIntoWords(string text)
     {
         var textRemaining = text.ToCharArray().ToList();

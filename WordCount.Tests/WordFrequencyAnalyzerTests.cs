@@ -172,4 +172,43 @@ public class WordFrequencyAnalyzerTests
         actual[2].Word.Should().Be("blueberry");
         actual[2].Frequency.Should().Be(2);
     }
+
+    [Fact]
+    public void CalculateHighestFrequency_OneWordInText_ReturnsFrequencyOfMostFrequentWord()
+    {
+        // Arrange
+        var text = "blueberry blueberry";
+        
+        // Act
+        var actual = _systemUnderTest.CalculateHighestFrequency(text);
+
+        // Assert
+        actual.Should().Be(2);
+    }
+    
+    [Fact]
+    public void CalculateHighestFrequency_MultipleWordsInText_ReturnsFrequencyOfMostFrequentWord()
+    {
+        // Arrange
+        var text = "blueberry blueberry. banana! apple apple apple?";
+        
+        // Act
+        var actual = _systemUnderTest.CalculateHighestFrequency(text);
+
+        // Assert
+        actual.Should().Be(3); // apple occurs the most: 3 times
+    }
+    
+    [Fact]
+    public void CalculateHighestFrequency_EmptyText_Returns0()
+    {
+        // Arrange
+        var text = "";
+        
+        // Act
+        var actual = _systemUnderTest.CalculateHighestFrequency(text);
+
+        // Assert
+        actual.Should().Be(0);
+    }
 }
