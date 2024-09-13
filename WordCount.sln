@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordCount", "WordCount\WordCount.csproj", "{4EE41661-2DAF-47AB-8F3A-C9F595B46C6B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordCount.Tests", "WordCount.Tests\WordCount.Tests.csproj", "{A6F0F89C-9439-446C-A73F-082D32601B5A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4EE41661-2DAF-47AB-8F3A-C9F595B46C6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EE41661-2DAF-47AB-8F3A-C9F595B46C6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EE41661-2DAF-47AB-8F3A-C9F595B46C6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EE41661-2DAF-47AB-8F3A-C9F595B46C6B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6F0F89C-9439-446C-A73F-082D32601B5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6F0F89C-9439-446C-A73F-082D32601B5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6F0F89C-9439-446C-A73F-082D32601B5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6F0F89C-9439-446C-A73F-082D32601B5A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
