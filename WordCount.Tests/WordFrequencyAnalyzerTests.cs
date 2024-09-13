@@ -110,6 +110,48 @@ public class WordFrequencyAnalyzerTests
         // Assert
         actual.Should().Be(2);
     }
+    
+    [Fact]
+    public void CalculateFrequencyForWord_TextDoesNotContainWord_Returns0()
+    {
+        // Arrange
+        var text = "An apple is an apple.";
+        var word = "banana";
+        
+        // Act
+        var actual = _systemUnderTest.CalculateFrequencyForWord(text, word);
+        
+        // Assert
+        actual.Should().Be(0);
+    }
+    
+    [Fact]
+    public void CalculateFrequencyForWord_TextIsEmpty_Returns0()
+    {
+        // Arrange
+        var text = "";
+        var word = "banana";
+        
+        // Act
+        var actual = _systemUnderTest.CalculateFrequencyForWord(text, word);
+        
+        // Assert
+        actual.Should().Be(0);
+    }
+    
+    [Fact]
+    public void CalculateFrequencyForWord_WordIsEmpty_Returns0()
+    {
+        // Arrange
+        var text = "banana";
+        var word = "";
+        
+        // Act
+        var actual = _systemUnderTest.CalculateFrequencyForWord(text, word);
+        
+        // Assert
+        actual.Should().Be(0);
+    }
 
     [Fact]
     public void CalculateMostFrequentNWords_OneWord_ReturnsWordWithFrequency1()
@@ -171,6 +213,19 @@ public class WordFrequencyAnalyzerTests
         
         actual[2].Word.Should().Be("blueberry");
         actual[2].Frequency.Should().Be(2);
+    }
+    
+    [Fact]
+    public void CalculateMostFrequentNWords_NLargerThanAmountOfWords_ReturnsAllWordFrequencies()
+    {
+        // Arrange
+        var text = "apple";
+        
+        // Act
+        var actual = _systemUnderTest.CalculateMostFrequentNWords(text, 2);
+        
+        // Assert
+        actual.Count.Should().Be(1);
     }
 
     [Fact]
